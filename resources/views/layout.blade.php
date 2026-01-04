@@ -9,7 +9,7 @@
     <title>@yield('pageTitle')</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+    <meta content="Free HTML Templates" name="">
 
     <!-- Favicon -->
     <link href="/assets/img/favicon.ico" rel="icon">
@@ -35,6 +35,28 @@
 
     <!-- Template Stylesheet -->
     <link href="/assets/css/style.css" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Par défaut : desktop */
+        .logo-mobile {
+            display: none;
+        }
+
+        /* Mobile */
+        @media (max-width: 767.98px) {
+            .logo-desktop {
+                display: none;
+            }
+
+            .logo-mobile {
+                display: block;
+            }
+        }
+    </style>
+    @livewireStyles
 </head>
 
 <body>
@@ -42,13 +64,13 @@
     <div id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary m-1" role="status">
-            <span class="sr-only">Loading...</span>
+            <span class="sr-only">Chargement...</span>
         </div>
         <div class="spinner-grow text-dark m-1" role="status">
-            <span class="sr-only">Loading...</span>
+            <span class="sr-only">Chargement...</span>
         </div>
         <div class="spinner-grow text-secondary m-1" role="status">
-            <span class="sr-only">Loading...</span>
+            <span class="sr-only">Chargement...</span>
         </div>
     </div>
     <!-- Spinner End -->
@@ -59,17 +81,18 @@
         <div class="row gx-0">
             <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center">
-                    <small class="py-2"><i class="far fa-clock text-primary me-2"></i>Opening Hours: Mon - Tues : 6.00
-                        am - 10.00 pm, Sunday Closed </small>
+                    <small class="py-2"><i class="far fa-clock text-primary me-2"></i>
+                        Horaires d'ouverture : Lun - Ven : 8h00 - 17h00, Dimanche fermé
+                    </small>
                 </div>
             </div>
             <div class="col-md-6 text-center text-lg-end">
                 <div class="position-relative d-inline-flex align-items-center bg-primary text-white top-shape px-5">
                     <div class="me-3 pe-3 border-end py-2">
-                        <p class="m-0"><i class="fa fa-envelope-open me-2"></i>info@example.com</p>
+                        <p class="m-0"><i class="fa fa-envelope-open me-2"></i>{{ $settings->email_one }}</p>
                     </div>
                     <div class="py-2">
-                        <p class="m-0"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</p>
+                        <p class="m-0"><i class="fa fa-phone-alt me-2"></i>{{ $settings->phone_two }}</p>
                     </div>
                 </div>
             </div>
@@ -81,17 +104,48 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
         <a href="/" class="navbar-brand p-0">
-            <img src="{{ asset('storage/' . $settings->logo) }}" alt="CNAO">
+            <img src="{{ asset('storage/' . $settings->logo) }}" alt="CNAO" class="logo-desktop">
+            <img src="/assets/img/logo_mobile.png" alt="CNAO" class="logo-mobile">
         </a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Service</a>
-                <div class="nav-item dropdown">
+                <a href="{{ url('/') }}" class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}">
+                    Accueil
+                </a>
+
+                <a href="{{ route('about') }}"
+                    class="nav-item nav-link {{ request()->routeIs('about') ? 'active' : '' }}">
+                    À propos
+                </a>
+
+                <a href="{{ url('/') }}#services"
+                    class="nav-item nav-link {{ request()->is('/') && request()->has('') ? 'active' : '' }}">
+                    Services offerts
+                </a>
+
+                <a href="{{ route('org') }}"
+                    class="nav-item nav-link {{ request()->routeIs('org') ? 'active' : '' }}">
+                    Organisation du CNAO
+                </a>
+
+                <a href="#" class="nav-item nav-link">
+                    READAPT’Actu
+                </a>
+
+                <a href="#" class="nav-item nav-link">
+                    Actualités
+                </a>
+
+                <a href="{{ route('contact') }}"
+                    class="nav-item nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">
+                    Contact
+                </a>
+
+                {{--   <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu m-0">
                         <a href="price.html" class="dropdown-item">Pricing Plan</a>
@@ -99,12 +153,11 @@
                         <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                         <a href="appointment.html" class="dropdown-item">Appointment</a>
                     </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div> --}}
             </div>
             <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i
                     class="fa fa-search"></i></button>
-            <a href="appointment.html" class="btn btn-primary py-2 px-4 ms-3">Appointment</a>
+            <a href="{{ url('/') }}#Rendez-vous" class="btn btn-primary py-2 px-4 ms-3">Rendez-vous</a>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -138,12 +191,7 @@
     <div class="container-fluid position-relative pt-5 wow fadeInUp" data-wow-delay="0.1s" style="z-index: 1;">
         <div class="container">
             <div class="bg-primary p-5">
-                <form class="mx-auto" style="max-width: 600px;">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                        <button class="btn btn-dark px-4">Sign Up</button>
-                    </div>
-                </form>
+                @livewire('newsletter-form')
             </div>
         </div>
     </div>
@@ -151,74 +199,98 @@
 
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light py-5 wow fadeInUp" data-wow-delay="0.3s"
-        style="margin-top: -75px;">
+    <div class="container-fluid bg-dark text-light pt-5 wow fadeInUp" data-wow-delay="0.3s">
         <div class="container pt-5">
-            <div class="row g-5 pt-4">
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-white mb-4">Quick Links</h3>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-light mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                        <a class="text-light mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                        <a class="text-light mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                        <a class="text-light mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                        <a class="text-light" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+            <div class="row g-5">
+
+                <!-- CNAO -->
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="text-white mb-4">CNAO</h3>
+                    <p class="mb-3">
+                        {!! $settings->description !!}
+                    </p>
+                </div>
+
+                <!-- Liens utiles -->
+                <div class="col-lg-2 col-md-6">
+                    <h3 class="text-white mb-4">Liens utiles</h3>
+                    <div class="d-flex flex-column">
+                        <a class="text-light mb-2" href="{{ url('/') }}">
+                            <i class="bi bi-chevron-right text-primary me-2"></i>Accueil
+                        </a>
+                        <a class="text-light mb-2" href="{{ route('about') }}">
+                            <i class="bi bi-chevron-right text-primary me-2"></i>À propos
+                        </a>
+                        <a class="text-light mb-2" href="{{ url('/') }}#services">
+                            <i class="bi bi-chevron-right text-primary me-2"></i>Services offerts
+                        </a>
+                        <a class="text-light" href="{{ route('contact') }}">
+                            <i class="bi bi-chevron-right text-primary me-2"></i>Contact
+                        </a>
                     </div>
                 </div>
+
+                <!-- Organisation -->
                 <div class="col-lg-3 col-md-6">
-                    <h3 class="text-white mb-4">Popular Links</h3>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-light mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                        <a class="text-light mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                        <a class="text-light mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                        <a class="text-light mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                        <a class="text-light" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                    <h3 class="text-white mb-4">Institution</h3>
+                    <div class="d-flex flex-column">
+                        <a class="text-light mb-2" href="{{ route('org') }}">
+                            <i class="bi bi-chevron-right text-primary me-2"></i>Organisation du CNAO
+                        </a>
+                        <a class="text-light mb-2" href="#">
+                            <i class="bi bi-chevron-right text-primary me-2"></i>READAPT’Actu
+                        </a>
+                        <a class="text-light" href="#">
+                            <i class="bi bi-chevron-right text-primary me-2"></i>Actualités
+                        </a>
                     </div>
                 </div>
+
+                <!-- Contact -->
                 <div class="col-lg-3 col-md-6">
-                    <h3 class="text-white mb-4">Get In Touch</h3>
-                    <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>info@example.com</p>
-                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+012 345 67890</p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="text-white mb-4">Follow Us</h3>
-                    <div class="d-flex">
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i
-                                class="fab fa-twitter fw-normal"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i
-                                class="fab fa-facebook-f fw-normal"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i
-                                class="fab fa-linkedin-in fw-normal"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded" href="#"><i
-                                class="fab fa-instagram fw-normal"></i></a>
+                    <h3 class="text-white mb-4">Contact</h3>
+                    <p class="mb-2">
+                        <i class="bi bi-geo-alt text-primary me-2"></i>
+                        {{ $settings->address }}
+                    </p>
+                    <p class="mb-2">
+                        <i class="bi bi-envelope-open text-primary me-2"></i>
+                        {{ $settings->email_one }}
+                    </p>
+                    <p class="mb-0">
+                        <i class="bi bi-telephone text-primary me-2"></i>
+                        {{ $settings->phone_one }}
+                    </p>
+
+                    <!-- Réseaux -->
+                    <div class="d-flex mt-3">
+                        <a class="btn btn-primary btn-square me-2" href="{{ $settings->facebook }}"
+                            target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-primary btn-square me-2" href="{{ $settings->twitter }}"
+                            target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-primary btn-square" href="{{ $settings->linkedin }}" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
-    <div class="container-fluid text-light py-4" style="background: #051225;">
+
+    <!-- Footer Bottom -->
+    <div class="container-fluid text-light py-3" style="background:#051225;">
         <div class="container">
-            <div class="row g-0">
+            <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-md-0">&copy; <a class="text-white border-bottom" href="#">Your Site Name</a>.
-                        All Rights Reserved.</p>
+                    <p class="mb-0">
+                        &copy; {{ date('Y') }}
+                        <span class="text-white fw-bold">Centre National d’Appareillage Orthopédique (CNAO)</span>.
+                        Tous droits réservés.
+                    </p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0">Designed by <a class="text-white border-bottom"
-                            href="https://htmlcodex.com">HTML Codex</a><br>
-                        Distributed by <a class="text-white border-bottom"
-                            href="https://themewagon.com">ThemeWagon</a>
+                    <p class="mb-0">
+                        Développé par <a href="javascript:void(0);" class="text-primary fw-bold">Seck Assane</a>
                     </p>
                 </div>
             </div>
@@ -247,6 +319,7 @@
 
     <!-- Template Javascript -->
     <script src="/assets/js/main.js"></script>
+    @livewireScripts
 </body>
 
 </html>

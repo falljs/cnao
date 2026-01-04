@@ -5,7 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
-    --bs-blue: #0d6efd;
+    --bs-blue: #146639;
     --bs-indigo: #6610f2;
     --bs-purple: #6f42c1;
     --bs-pink: #d63384;
@@ -14,14 +14,14 @@
     --bs-yellow: #ffc107;
     --bs-green: #198754;
     --bs-teal: #20c997;
-    --bs-cyan: #0dcaf0;
+    --bs-cyan: #146639;
     --bs-white: #fff;
     --bs-gray: #6c757d;
     --bs-gray-dark: #343a40;
     --bs-primary: #146639;
     --bs-secondary: #e02a2a;
     --bs-success: #198754;
-    --bs-info: #0dcaf0;
+    --bs-info: #146639;
     --bs-warning: #ffc107;
     --bs-danger: #dc3545;
     --bs-light: #EEF9FF;
@@ -3217,8 +3217,8 @@ fieldset:disabled .btn {
 
 .btn-info {
     color: #000;
-    background-color: #0dcaf0;
-    border-color: #0dcaf0
+    background-color: #146639;
+    border-color: #146639
 }
 
 .btn-info:hover {
@@ -3256,8 +3256,8 @@ fieldset:disabled .btn {
 .btn-info:disabled,
 .btn-info.disabled {
     color: #000;
-    background-color: #0dcaf0;
-    border-color: #0dcaf0
+    background-color: #146639;
+    border-color: #146639
 }
 
 .btn-warning {
@@ -3561,14 +3561,14 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-info {
-    color: #0dcaf0;
-    border-color: #0dcaf0
+    color: #146639;
+    border-color: #146639
 }
 
 .btn-outline-info:hover {
     color: #000;
-    background-color: #0dcaf0;
-    border-color: #0dcaf0
+    background-color: #146639;
+    border-color: #146639
 }
 
 .btn-check:focus+.btn-outline-info,
@@ -3582,8 +3582,8 @@ fieldset:disabled .btn {
 .btn-outline-info.active,
 .btn-outline-info.dropdown-toggle.show {
     color: #000;
-    background-color: #0dcaf0;
-    border-color: #0dcaf0
+    background-color: #146639;
+    border-color: #146639
 }
 
 .btn-check:checked+.btn-outline-info:focus,
@@ -3596,7 +3596,7 @@ fieldset:disabled .btn {
 
 .btn-outline-info:disabled,
 .btn-outline-info.disabled {
-    color: #0dcaf0;
+    color: #146639;
     background-color: transparent
 }
 
@@ -6908,7 +6908,7 @@ fieldset:disabled .btn {
 }
 
 .link-info {
-    color: #0dcaf0
+    color: #146639
 }
 
 .link-info:hover,
@@ -7319,7 +7319,7 @@ fieldset:disabled .btn {
 }
 
 .border-info {
-    border-color: #0dcaf0 !important
+    border-color: #146639 !important
 }
 
 .border-warning {
@@ -8296,7 +8296,7 @@ fieldset:disabled .btn {
 }
 
 .text-info {
-    color: #0dcaf0 !important
+    color: #146639 !important
 }
 
 .text-warning {
@@ -8352,7 +8352,7 @@ fieldset:disabled .btn {
 }
 
 .bg-info {
-    background-color: #0dcaf0 !important
+    background-color: #146639 !important
 }
 
 .bg-warning {

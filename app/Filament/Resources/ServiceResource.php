@@ -43,7 +43,7 @@ class ServiceResource extends Resource
                         ->label('Description')
                         ->required()
                         ->fileAttachmentsDisk('public')
-                        ->fileAttachmentsDirectory('blogs')
+                        ->fileAttachmentsDirectory('services')
                         ->toolbarButtons([
                             'bold',
                             'italic',
@@ -56,6 +56,7 @@ class ServiceResource extends Resource
                             'codeBlock',
                             'h2',
                             'h3',
+                            'table', 'attachFiles',
                             'redo',
                             'undo',
                         ])

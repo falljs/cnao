@@ -1,7 +1,7 @@
 /********** Template CSS **********/
 :root {
     --primary: #146639;
-    --secondary: #F57E57;
+    --secondary: #e02a2a;
     --light: #EEF9FF;
     --dark: #091E3E;
 }
@@ -236,12 +236,12 @@ h6,
 }
 
 .bg-offer {
-    background: url(../img/carousel-1.jpg) center center no-repeat;
+    background: url(../img/carousel-1.png) center center no-repeat;
     background-size: cover;
 }
 
 .offer-text {
-    background: rgba(6, 163, 218, .85);
+    background: #146639;
 }
 
 .price-carousel .owl-nav {
@@ -281,12 +281,12 @@ h6,
 }
 
 .bg-testimonial {
-    background: url(../img/carousel-2.jpg) center center no-repeat;
+    background: url(../img/tenoie.png) center center no-repeat;
     background-size: cover;
 }
 
 .testimonial-carousel {
-    background: rgba(6, 163, 218, .85);
+    background: #146639;
 }
 
 .testimonial-carousel .owl-nav {
