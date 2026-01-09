@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Str;
 class Blog extends Model
 {
     use HasFactory;
@@ -12,6 +12,7 @@ class Blog extends Model
     protected $fillable = [
         'image',
         'title',
+        'slug',
         'description',
         'blog_category_id',
         'view_count',
@@ -24,5 +25,17 @@ class Blog extends Model
     public function category()
     {
         return $this->belongsTo(BlogCategory::class, 'blog_category_id');
+    }
+
+    protected static function booted()
+    {
+        static::creating(function ($service) {
+            $service->slug = Str::slug($service->title);
+        });
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

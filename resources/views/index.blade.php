@@ -1,5 +1,6 @@
 @extends('layout')
-@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Accueil - Centre National d’Appareillage Orthopédique (CNAO)')
+@section('pageTitle', isset($pageTitle) ? $pageTitle : 'CNAO – Centre National d\'Appareillage Orthopédique,
+    Réadaptation et Rééducation au Sénégal')
 @section('content')
     @php
         $banners = \App\Models\Banner::where('is_active', 1)->get();
@@ -294,7 +295,7 @@
                                 <p class="card-text">
                                     {!! \Illuminate\Support\Str::limit($service->description, 100) !!}
                                 </p>
-                                <a href="{{ route('services.show', $service) }}" class="btn btn-primary">En savoir
+                                <a href="{{ route('services.show', $service->slug) }}" class="btn btn-primary">En savoir
                                     plus</a>
                             </div>
                         </div>
@@ -419,16 +420,14 @@
                     <h1 class="wow fadeInUp" data-wow-delay="0.6s">+221 33 123 45 67</h1>
                 </div>
 
-                <!-- Carrousel des blogs -->
+                @php
+                    $blogs = \App\Models\Blog::latest()->take(5)->get();
+                @endphp
+
                 <div class="col-lg-7">
-                    <div class="owl-carousel blog-carousel wow zoomIn" data-wow-delay="0.9s">
-
-                        @php
-                            $blogs = \App\Models\Blog::latest()->take(5)->get();
-                        @endphp
-
+                    <div class="owl-carousel price-carousel wow zoomIn" data-wow-delay="0.9s">
                         @foreach ($blogs as $blog)
-                            <div class="blog-item pb-4">
+                            <div class="price-item pb-4">
                                 <div class="position-relative">
                                     <img class="img-fluid rounded-top" src="{{ asset('storage/' . $blog->image) }}"
                                         alt="{{ $blog->title }}">
@@ -443,21 +442,23 @@
                                     <div class="mb-3">
                                         {!! \Illuminate\Support\Str::limit(strip_tags($blog->description), 120, '...') !!}
                                     </div>
-                                    <a href="#"
+                                    <a href="{{ route('blog.show', $blog->slug) }}"
                                         class="btn btn-primary py-2 px-4 position-absolute top-100 start-50 translate-middle">
                                         Lire l'article
                                     </a>
                                 </div>
                             </div>
                         @endforeach
-
                     </div>
+
+
                 </div>
+
+
             </div>
         </div>
     </div>
     <!-- Blog Section End -->
-
 
 
     <!-- Testimonial Start -->
@@ -484,9 +485,12 @@
                             <img class="img-fluid mx-auto rounded mb-4" src="/assets/img/Mareme-DIALLO-temoignage.jpg"
                                 alt="">
                             <p class="fs-5">
-                                Cnao est un centre et les gens qui sont la bas sont gentils et s'occupent des patients comme
-                                il faut j'en connais pas mal tels que des kinés comme ousseynou Faye cheikh Ndiaye qui ne
-                                sont plus là bas et tant d'autres ainsi le défunt docteur Amadou coura ndao paix à son ame
+                                Cnao est un centre et les gens qui sont la bas sont gentils et s'occupent des patients
+                                comme
+                                il faut j'en connais pas mal tels que des kinés comme ousseynou Faye cheikh Ndiaye qui
+                                ne
+                                sont plus là bas et tant d'autres ainsi le défunt docteur Amadou coura ndao paix à son
+                                ame
                                 bonne continuation
                                 Philippe et à tte le l'équipe de ce centre
                             </p>
@@ -501,7 +505,8 @@
                                 alt="">
                             <p class="fs-5">
                                 Sa c'est vrai moi j'y suis allée j'ai été suivi par le docteur birame pour une hernie
-                                discale et par docteur aloise pour une paralysie faciale mais machallah mention spéciale à
+                                discale et par docteur aloise pour une paralysie faciale mais machallah mention spéciale
+                                à
                                 eux
                             </p>
                             <hr class="mx-auto w-25">
@@ -516,5 +521,6 @@
         </div>
     </div>
     <!-- Testimonial End -->
+
 
 @endsection

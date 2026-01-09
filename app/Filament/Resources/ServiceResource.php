@@ -11,6 +11,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\TextInput;
 
 class ServiceResource extends Resource
 {
@@ -32,12 +33,17 @@ class ServiceResource extends Resource
                             ->directory('services')
                             ->visibility('public')
                             ->imageEditor()
-                            ->imagePreviewHeight('200'),
+                            ->imagePreviewHeight('200')
+                            ->required(),
 
                         Forms\Components\TextInput::make('title')
                             ->label('Titre')
                             ->required()
                             ->maxLength(255),
+
+                        TextInput::make('slug')
+                            ->disabled()
+                            ->required(),
 
                         RichEditor::make('description')
                         ->label('Description')

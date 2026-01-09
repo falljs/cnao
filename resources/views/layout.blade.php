@@ -8,11 +8,38 @@
     <meta charset="utf-8">
     <title>@yield('pageTitle')</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="">
+
+    <meta name="description"
+        content="Le CNAO est un centre de référence en rééducation et réadaptation fonctionnelle au Sénégal. Depuis 1917, nous prenons en charge les personnes en situation de handicap et favorisons leur insertion sociale et professionnelle.">
+
+    <!-- Mots-clés SEO -->
+    <meta name="keywords"
+        content="CNAO, Centre National d'Appareillage Orthopédique, rééducation, réadaptation fonctionnelle, handicap, kinésithérapie, appareillage orthopédique, Sénégal, soins spécialisés, EPS niveau 3">
+
+    <!-- Auteur -->
+    <meta name="author" content="Centre National d’Appareillage Orthopédique – CNAO">
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:title" content="CNAO – Rééducation et Réadaptation Fonctionnelle au Sénégal">
+    <meta property="og:description"
+        content="Le Centre National d'Appareillage Orthopédique (CNAO) offre des soins spécialisés en rééducation et réadaptation pour les personnes en situation de handicap.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cnao.gouv.sn/">
+    <meta property="og:image" content="/assets/img/cnao-facade.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CNAO – Rééducation et Réadaptation Fonctionnelle au Sénégal">
+    <meta name="twitter:description"
+        content="Découvrez le CNAO, centre de référence en rééducation et réadaptation fonctionnelle au Sénégal, dédié à l'accompagnement des personnes en situation de handicap.">
+    <meta name="twitter:image" content="/assets/img/cnao-facade.png">
+
 
     <!-- Favicon -->
-    <link href="/assets/img/favicon.ico" rel="icon">
+    <link href="/assets/img/Favicon.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -132,11 +159,11 @@
                     Organisation du CNAO
                 </a>
 
-                <a href="#" class="nav-item nav-link">
+                <a href="{{ route('readaptactu') }}" class="nav-item nav-link">
                     READAPT’Actu
                 </a>
 
-                <a href="#" class="nav-item nav-link">
+                <a href="{{ route('articles') }}" class="nav-item nav-link">
                     Actualités
                 </a>
 
@@ -237,10 +264,10 @@
                         <a class="text-light mb-2" href="{{ route('org') }}">
                             <i class="bi bi-chevron-right text-primary me-2"></i>Organisation du CNAO
                         </a>
-                        <a class="text-light mb-2" href="#">
+                        <a class="text-light mb-2" href="{{ route('readaptactu') }}">
                             <i class="bi bi-chevron-right text-primary me-2"></i>READAPT’Actu
                         </a>
-                        <a class="text-light" href="#">
+                        <a class="text-light" href="{{ route('articles') }}">
                             <i class="bi bi-chevron-right text-primary me-2"></i>Actualités
                         </a>
                     </div>

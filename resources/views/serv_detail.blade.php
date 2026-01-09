@@ -47,21 +47,49 @@
                         {!! $service->description !!}
                     </div>
 
-                    {{--    <a href="#appointment" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn">
-                        Prendre rendez-vous
-                    </a> --}}
+
                 </div>
 
                 <!-- Image -->
-                <div class="col-lg-5" style="min-height: 450px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.3s"
-                            src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->title }}"
-                            style="object-fit: cover;">
+                <div class="col-lg-5 h-100 d-none d-md-block" style="min-height: 450px;">
+                    <div class="position-relative h-100 overflow-hidden">
+                        <img src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->title }}"
+                            class="w-100 h-100 rounded" style="object-fit: cover;">
                     </div>
                 </div>
 
+                {{-- Vérifie si le slug est salle-de-sport --}}
+                @if ($service->slug === 'salle-de-sport')
+                    <div class="my-5">
+                        <h2 class="mb-4 text-center">Découvrez notre Salle de Sport</h2>
+                        <div class="ratio ratio-16x9">
+                            <video controls autoplay muted loop class="w-100">
+                                <source src="{{ asset('storage/videos/Salle_de_Sport_cnao.mp4') }}" type="video/mp4">
+                                Votre navigateur ne supporte pas la lecture de vidéos.
+                            </video>
+                        </div>
+                    </div>
+                @endif
+
             </div>
+
+
+            @if (!empty($departments))
+                <div class="mb-4">
+                    <h5 class="text-primary mb-3">
+                        Départements concernés
+                    </h5>
+
+                    <div class="d-flex flex-wrap gap-2">
+                        @foreach ($departments as $department)
+                            <span class="badge bg-primary px-3 py-2">
+                                {{ $department }}
+                            </span>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
         </div>
     </div>
     <!-- Service Details End -->
