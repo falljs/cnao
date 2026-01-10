@@ -82,6 +82,11 @@
                 display: block;
             }
         }
+
+        /* Masquer les captions des images uploadées */
+        figcaption.attachment__caption {
+            display: none !important;
+        }
     </style>
     @livewireStyles
 </head>
