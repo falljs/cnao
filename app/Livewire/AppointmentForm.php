@@ -13,7 +13,7 @@ class AppointmentForm extends Component
 
     protected $rules = [
         'service' => 'required',
-        'doctor' => 'required',
+        'doctor' => '',
         'name' => 'required|min:3',
         'email' => 'required|email',
         'appointment_date' => 'required|date',

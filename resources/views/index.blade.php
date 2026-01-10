@@ -1,5 +1,8 @@
 @extends('layout')
-@section('pageTitle', isset($pageTitle) ? $pageTitle : 'CNAO – Centre National d\'Appareillage Orthopédique,
+@section('pageTitle',
+    isset($pageTitle)
+    ? $pageTitle
+    : 'CNAO – Centre National d\'Appareillage Orthopédique,
     Réadaptation et Rééducation au Sénégal')
 @section('content')
     @php
@@ -264,7 +267,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="appointment-form h-100 d-flex flex-column justify-content-center text-center p-5 wow zoomIn"
-                        data-wow-delay="0.6s">
+                        style="background-color: #146639;" data-wow-delay="0.6s">
                         <h1 class="text-white mb-4">Prendre rendez-vous</h1>
                         @livewire('appointment-form')
                     </div>

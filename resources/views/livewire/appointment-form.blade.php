@@ -9,19 +9,20 @@
         @endif
 
         <div class="row g-3">
-            <div class="col-12 col-sm-6">
+            <div class="col-12 col-sm-12">
                 <select wire:model="service" class="form-select bg-light border-0" style="height: 55px;">
-                    <option value="">Select A Service</option>
+                    <option value="">Selectionnez un Service</option>
                     <option>Consultation</option>
                     <option>Soins dentaires</option>
                     <option>Urgence</option>
+                    <option>Autres</option>
                 </select>
                 @error('service')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
 
-            <div class="col-12 col-sm-6">
+            {{--  <div class="col-12 col-sm-6">
                 <select wire:model="doctor" class="form-select bg-light border-0" style="height: 55px;">
                     <option value="">Select Doctor</option>
                     <option>Dr Diop</option>
@@ -31,18 +32,18 @@
                 @error('doctor')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
-            </div>
+            </div> --}}
 
             <div class="col-12 col-sm-6">
-                <input wire:model="name" type="text" class="form-control bg-light border-0" placeholder="Your Name"
-                    style="height: 55px;">
+                <input wire:model="name" type="text" class="form-control bg-light border-0"
+                    placeholder="Prénom et nom" style="height: 55px;">
                 @error('name')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
 
             <div class="col-12 col-sm-6">
-                <input wire:model="email" type="email" class="form-control bg-light border-0" placeholder="Your Email"
+                <input wire:model="email" type="email" class="form-control bg-light border-0" placeholder="e-mail"
                     style="height: 55px;">
                 @error('email')
                     <small class="text-danger">{{ $message }}</small>

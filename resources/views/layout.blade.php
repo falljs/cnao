@@ -182,8 +182,6 @@
                     </div>
                 </div> --}}
             </div>
-            <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i
-                    class="fa fa-search"></i></button>
             <a href="{{ url('/') }}#Rendez-vous" class="btn btn-primary py-2 px-4 ms-3">Rendez-vous</a>
         </div>
     </nav>
